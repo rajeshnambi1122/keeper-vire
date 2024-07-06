@@ -3,9 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 html {
   font-family: "Montserrat", sans-serif;
 }
+
 body {
   background: #eee;
   padding: 0 16px;
@@ -37,6 +39,7 @@ footer {
 footer p {
   color: #000;
 }
+
 .note {
   background: #fff;
   border-radius: 7px;
@@ -46,10 +49,12 @@ footer p {
   margin: 16px;
   float: left;
 }
+
 .note h1 {
   font-size: 1.1em;
   margin-bottom: 6px;
 }
+
 .note p {
   font-size: 1.1em;
   margin-bottom: 10px;
@@ -78,6 +83,7 @@ form {
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
+
 form input,
 form textarea {
   width: 100%;
@@ -88,6 +94,7 @@ form textarea {
   font-family: inherit;
   resize: none;
 }
+
 form button {
   position: absolute;
   right: 18px;
@@ -101,4 +108,72 @@ form button {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   outline: none;
+}
+
+/* Media Queries for Mobile Devices */
+@media only screen and (max-width: 1200px) {
+  .note {
+    width: calc(50% - 40px); /* Two columns layout */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .note {
+    width: calc(100% - 40px); /* Single column layout */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 0 10px;
+  }
+
+  header {
+    margin: auto -10px;
+    padding: 12px 24px;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  .note {
+    width: calc(100% - 20px); /* Single column with smaller margins */
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .note h1 {
+    font-size: 1em;
+  }
+
+  .note p {
+    font-size: 0.9em;
+  }
+
+  form {
+    width: calc(100% - 20px);
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  form input,
+  form textarea {
+    font-size: 1em;
+  }
+
+  form button {
+    right: 10px;
+    bottom: -15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  footer {
+    height: 2rem;
+  }
+
+  footer p {
+    font-size: 0.8em;
+  }
 }
