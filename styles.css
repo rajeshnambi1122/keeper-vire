@@ -12,6 +12,7 @@ body {
   background: #eee;
   padding: 0 16px;
   background-image: url("https://www.transparenttextures.com/patterns/batthern.png");
+  overflow-x: hidden;
 }
 
 header {
