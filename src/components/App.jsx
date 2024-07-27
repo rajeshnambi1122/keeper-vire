@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 
-
 function App() {
-  const [notes, setnotes] = useState([]);
+  const [notes, setNotes] = useState([]);
+  
+  useEffect(() => {
+    const storedNotes = JSON.parse(localStorage.getItem("notes"));
+    if (storedNotes) {
+      setNotes(storedNotes);
+    }
+  }, []);
 
-  function addNote(newnote) {
-    setnotes(prevnotes => {
-      return [...prevnotes, newnote];
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
+  function addNote(newNote) {
+    setNotes((prevNotes) => {
+      return [...prevNotes, newNote];
     });
   }
 
-  function deleteNote(id){
-   setnotes(prevnotes => {
-    return prevnotes.filter((noteItem, index)=> {
-      return index!== id
-    })
-   })
+  function deleteNote(id) {
+    setNotes((prevNotes) => {
+      return prevNotes.filter((noteItem, index) => {
+        return index !== id;
+      });
+    });
   }
 
   return (
@@ -27,7 +37,15 @@ function App() {
       <Header />
       <CreateArea onAdd={addNote} />
       {notes.map((noteItem, index) => {
-        return <Note key={index} id={index} title={noteItem.title} content={noteItem.content} delete={deleteNote} />;
+        return (
+          <Note
+            key={index}
+            id={index}
+            title={noteItem.title}
+            content={noteItem.content}
+            delete={deleteNote}
+          />
+        );
       })}
       <Footer />
     </div>
@@ -35,3 +53,4 @@ function App() {
 }
 
 export default App;
+
